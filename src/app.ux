@@ -1,0 +1,33 @@
+<script>
+/**
+* 应用级别的配置，供所有页面公用
+*/
+import util from './util'
+import http from './http.js'
+/**
+ * 对接轻粒子sdk
+ */
+import './appStatistics.min.js'
+// 注意：仅用于注入类库函数，不允许存储页面组件等数据
+const injectRef = Object.getPrototypeOf(global) || global
+
+// 注入regeneratorRuntime
+injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
+export default {
+  ...util,
+  $http: http,
+  key: '24d597138c99ebe0e5153d2705e37550',
+  onCreate() {
+      APP_STATISTICS.app_sta_init( this );  // 轻粒子sdk
+  },
+  //  监听应用错误的生命周期函数
+  onError(err) {
+      try {
+          // 错误统计打点代码
+          APP_STATISTICS.on_err(err);
+      } catch (error) {
+
+      }
+  }
+}
+</script>

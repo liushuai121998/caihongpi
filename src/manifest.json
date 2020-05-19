@@ -1,0 +1,50 @@
+{
+  "package": "com.caihongpi.package",
+  "name": "彩虹屁",
+  "versionName": "1.0.1",
+  "versionCode": "1",
+  "minPlatformVersion": "1060",
+  "icon": "/Common/logo.png",
+  "features": [
+    {
+      "name": "system.prompt"
+    },
+    {
+      "name": "system.router"
+    },
+    {
+      "name": "system.shortcut"
+    },
+    { "name": "system.fetch" },
+    { "name": "system.clipboard" },
+    {"name":"service.ad"}
+  ],
+  "permissions": [
+    {
+      "origin": "*"
+    }
+  ],
+  "config": {
+    "logLevel": "off"
+  },
+  "router": {
+    "entry": "Home",
+    "pages": {
+      "Home": {
+        "component": "index"
+      }
+    }
+  },
+  "display": {
+    "titleBarBackgroundColor": "#f2f2f2",
+    "titleBarTextColor": "#414141",
+    "menu": true,
+    "pages": {
+      "Home": {
+        "titleBarText": "彩虹屁",
+        "menu": false,
+        "titleBar": false
+      }
+    }
+  }
+}

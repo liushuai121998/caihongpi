@@ -1,0 +1,62 @@
+<import name="short-cut" src="../components/shortcut"></import>
+
+<template>
+  <!-- template里只能有一个根节点 -->
+  <div class="home">
+    <div class="title">
+      <image class="title__icon" src="/Common/title-icon.png"></image>
+      <image class="title__sub-icon" src="/Common/title-sub-icon.png"></image>
+      <image class="title__image" src="/Common/main-logo.png"></image>
+    </div>
+    <div class="main">
+      <div class="content">
+        <block for="{{item in newsList}}">
+          <list class="content-item" onlongpress="longPress(item)">
+            <list-item type="content-reply" class="content__reply">
+              <text class="time">{{dateNow}}</text>
+              <text>{{item.content}}</text>
+            </list-item>
+          </list>
+          <div class="content__copy" onlongpress="longPress(item)">
+            <image src="/Common/copy-icon.png" class="content__copy__icon"></image>
+            <text class="content__copy__text">长按进行复制</text>
+          </div>
+        </block>
+      </div>
+      <div class="recharge-btn" onclick="getData">
+        <image class="recharge__icon" src="/Common/change-icon.png"></image>
+        <text class="recharge__text">换一句</text>
+      </div>
+      <div class="footer-ad" if="{{footerAdShow}}" onclick="reportAdClick" onappear="reportAdShow">
+        <div class="footer-ad__img">
+          <block if="{{footerAd.icon}}">
+            <image class="footer-ad__img__icon" src="{{footerAd.icon}}"></image>
+          </block>
+          <image class="footer-ad__img__main" src="{{footerAd.imgUrlList ? footerAd.imgUrlList[0] : ''}}"></image>
+          <text class="click-btn__text">{{footerAd.clickBtnText || '查看详情'}}</text>
+        </div>
+        <div class="ad-tip">
+          <text>广告</text>
+        </div>
+        <!-- <image onclick="hideFooterAd" class="close footer-close" src="/Common/close.png"></image> -->
+      </div>
+    </div>
+    <div class="modal" if="{{modalShow}}">
+      <div class="mask">
+      </div>
+      <div class="modal-content">
+        <div class="insert-ad">
+          <image onclick="closeModal" src="/Common/close.png" class="close"></image>
+        </div>
+      </div>
+    </div>
+    <short-cut></short-cut>
+  </div>
+</template>
+
+<script src="./index.js">
+</script>
+
+<style>
+  @import './index.css';
+</style>

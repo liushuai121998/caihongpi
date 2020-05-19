@@ -1,0 +1,62 @@
+<template>
+    <div class="short-cut-wrap">
+        <div class="content" if="{{showShortCut}}" onclick="confirm">
+            <image src="/Common/huojian.png"></image>
+            <text>添加至桌面</text>
+        </div>
+    </div>
+</template>
+<script>
+import shortcut from '@system.shortcut';
+export default {
+    data: {
+        showShortCut: true
+    },
+    onInit() {
+        // 是否已经创建了图标
+        shortcut.hasInstalled({
+            success: (ret) => {
+                if (ret) {
+                    this.showShortCut = false
+                } else {
+                    this.showShortCut = true
+                }
+            }
+        })
+    },
+    cancel () {
+        this.showShortCut = false
+    },
+    confirm () {
+        this.$app.$def.createShortcut().then(() => {
+            this.showShortCut = false
+        })
+    }
+}
+</script>
+<style>
+.short-cut-wrap {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    right: 50px;
+    bottom: 280px;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: rgba(255, 255, 255, .8); */
+    border: 1px solid #fff ;
+    border-radius: 10px;
+    padding: 5px;
+}
+.content image {
+    width: 60px;
+}
+.content text {
+    font-size: 20px;
+    color: #fff;
+}
+</style>
+

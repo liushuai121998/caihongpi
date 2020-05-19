@@ -1,0 +1,93 @@
+<template>
+    <div class="short-cut-wrap">
+        <div class="short-cut" if="showShortCut">
+            <image onclick="cancel" class="close" src="/Common/close.png"></image>
+            <image class="logo" src="/Common/logo.png"></image>
+            <text class="content-title">添加至桌面快捷方式</text>
+            <div class="btns">
+                <text class="confirm-btn" onclick="confirm">立即添加</text>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+import shortcut from '@system.shortcut';
+export default {
+    data: {
+        showShortCut: true
+    },
+    onInit() {
+        // 是否已经创建了图标
+        shortcut.hasInstalled({
+            success: (ret) => {
+                if (ret) {
+                    this.showShortCut = false
+                } else {
+                    this.showShortCut = true
+                }
+            }
+        })
+    },
+    cancel () {
+        this.showShortCut = false
+    },
+    confirm () {
+        this.$app.$def.createShortcut().then(() => {
+            this.showShortCut = false
+        })
+    }
+}
+</script>
+<style>
+.short-cut-wrap {
+    display: flex;
+    justify-content: center;
+    /* padding: 0 20px; */
+    position: fixed;
+    left: 0;
+    bottom: 20px;
+}
+.short-cut {
+    width: 100%;
+    height: 100px;
+    background-color: rgba(0, 0, 0, .5);
+    /* border-radius: 20px; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 25px;
+}
+.logo {
+    width: 80px;
+    height: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.content-title {
+    display: flex;
+    flex-direction: column;
+    font-size: 36px;
+    /* font-weight: bold; */
+    color: #999;
+}
+.btns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    /* align-items: center; */
+    flex: 1;
+}
+.confirm-btn {
+    color: #fff;
+    font-size: 30px;
+    background-color: #4B90E1;
+    padding: 15px 10px;
+    border-radius: 8px;
+}
+.close {
+    width: 40px;
+    height: 40px;
+    
+}
+</style>
+
