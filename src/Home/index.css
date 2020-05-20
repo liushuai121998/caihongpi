@@ -14,19 +14,19 @@
   .title {
     position: absolute;
     width: 100%;
-    top: 120px;
+    top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 180px;
+    height: 150px;
   }
   .title__icon {
-      height: 150px;
+      height: 80px;
   }
   .title__sub-icon {
       position: absolute;
-      top: 130px;
-      height: 50px;
+      top: 100px;
+      height: 40px;
   }
   .title text {
       font-size: 90px;
@@ -38,7 +38,7 @@
       width: 220px;
   }
   .main {
-    margin-top: 360px;
+    margin-top: 300px;
     display: flex;
     flex-direction: column;
     padding: 0 50px;
