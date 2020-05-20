@@ -1,19 +1,27 @@
   .home {
-    background-image: url(../Common/bg.png);
+    /* background-image: url(../Common/bg.png); */
     display: flex;
     flex-direction: column;
     position: relative;
   }
+  .bg {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+  }
   .title {
     position: absolute;
     width: 100%;
-    top: 180px;
+    top: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 180px;
   }
   .title__icon {
-      height: 180px;
+      height: 150px;
   }
   .title__sub-icon {
       position: absolute;
@@ -30,7 +38,7 @@
       width: 220px;
   }
   .main {
-    margin-top: 420px;
+    margin-top: 360px;
     display: flex;
     flex-direction: column;
     padding: 0 50px;
