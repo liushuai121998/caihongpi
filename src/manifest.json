@@ -1,8 +1,8 @@
 {
   "package": "com.caihongpi.package",
-  "name": "彩虹屁",
-  "versionName": "1.0.1",
-  "versionCode": "1",
+  "name": "一同彩虹屁",
+  "versionName": "1.0.2",
+  "versionCode": "2",
   "minPlatformVersion": "1060",
   "icon": "/Common/logo.png",
   "features": [
@@ -41,7 +41,7 @@
     "menu": true,
     "pages": {
       "Home": {
-        "titleBarText": "彩虹屁",
+        "titleBarText": "一同彩虹屁",
         "menu": false,
         "titleBar": false
       }
